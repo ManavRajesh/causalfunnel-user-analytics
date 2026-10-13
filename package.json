@@ -1,0 +1,26 @@
+{
+  "name": "causalfunnel-user-analytics",
+  "version": "1.0.0",
+  "description": "Full Stack User Analytics Application: Client Tracker, Node.js API, MongoDB, and React Session/Heatmap Dashboard",
+  "scripts": {
+    "setup": "npm run install:all && npm run build:frontend && npm run seed",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "start": "cd backend && npm start",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "seed": "cd backend && npm run seed"
+  },
+  "keywords": [
+    "analytics",
+    "session-tracking",
+    "user-journey",
+    "heatmap",
+    "mongodb",
+    "react",
+    "nodejs",
+    "express"
+  ],
+  "author": "CausalFunnel Full Stack Engineer Candidate",
+  "license": "MIT"
+}

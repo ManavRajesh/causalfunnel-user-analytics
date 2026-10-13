@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Store | Secure Checkout</title>
+  <link rel="stylesheet" href="/demo/styles.css">
+  <!-- CausalFunnel Analytics Tracker Script -->
+  <script src="/tracker.js" data-endpoint="/api/events"></script>
+  <style>
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 2.5rem;
+      margin: 2rem 0 5rem;
+    }
+    @media (max-width: 800px) {
+      .checkout-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .form-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+    }
+    .order-summary-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem;
+      position: sticky;
+      top: 5rem;
+    }
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      color: var(--text-muted);
+    }
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="/demo/index.html" class="brand" id="brand-logo">
+        <span>AURA</span>
+        <span class="brand-badge">Demo</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/demo/index.html" id="nav-home">Home</a>
+        <a href="/demo/product.html" id="nav-products">Products</a>
+        <a href="/demo/checkout.html" class="active" id="nav-checkout">Checkout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 style="font-size: 2rem; margin: 1.5rem 0 0.5rem;">Secure Checkout</h1>
+    <p style="color:var(--text-muted); margin-bottom: 2rem;">Complete your transaction with encrypted 256-bit checkout.</p>
+
+    <div class="checkout-grid">
+      <div>
+        <!-- Shipping details -->
+        <div class="form-box">
+          <h2 style="font-size: 1.25rem; margin-bottom: 1.25rem;">1. Shipping Address</h2>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" id="input-first-name" value="Alex">
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" id="input-last-name" value="Morgan">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Street Address</label>
+            <input type="text" id="input-address" value="442 Market Street, Suite 500">
+          </div>
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" id="input-city" value="San Francisco">
+            </div>
+            <div class="form-group">
+              <label>State</label>
+              <input type="text" id="input-state" value="CA">
+            </div>
+            <div class="form-group">
+              <label>ZIP</label>
+              <input type="text" id="input-zip" value="94105">
+            </div>
+          </div>
+        </div>
+
+        <!-- Shipping Method -->
+        <div class="form-box">
+          <h2 style="font-size: 1.25rem; margin-bottom: 1rem;">2. Delivery Speed</h2>
+          <label class="radio-option">
+            <input type="radio" name="shipping" checked id="shipping-standard">
+            <div style="flex: 1;">
+              <strong>Standard Ground</strong> (3-5 business days)
+            </div>
+            <span>Free</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="shipping" id="shipping-express">
+            <div style="flex: 1;">
+              <strong>Express Priority</strong> (Next Day Air)
+            </div>
+            <span>+$9.00</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div>
+        <div class="order-summary-box">
+          <h2 style="font-size: 1.25rem; margin-bottom: 1.25rem;">Order Summary</h2>
+          <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border);">
+            <div style="font-size: 2.5rem; background: var(--bg-primary); border: 1px solid var(--border); padding: 0.5rem; border-radius: 8px;">🎧</div>
+            <div>
+              <strong>Aura Wireless Pro</strong>
+              <div style="color:var(--text-muted); font-size:0.85rem;">Color: Midnight Black</div>
+              <div style="color:#fff; font-weight:700;">$249.00</div>
+            </div>
+          </div>
+
+          <div class="form-group" style="display: flex; gap: 0.5rem;">
+            <input type="text" id="coupon-code" placeholder="Promo code" value="CAUSAL20">
+            <button class="btn btn-secondary btn-sm" id="apply-coupon" onclick="alert('Promo code CAUSAL20 applied! $20 OFF')">Apply</button>
+          </div>
+
+          <div class="summary-line">
+            <span>Subtotal</span>
+            <span>$249.00</span>
+          </div>
+          <div class="summary-line">
+            <span>Shipping</span>
+            <span>$0.00</span>
+          </div>
+          <div class="summary-line" style="color:#10b981;">
+            <span>Discount (CAUSAL20)</span>
+            <span>-$20.00</span>
+          </div>
+          <div class="summary-total">
+            <span>Total</span>
+            <span id="final-total">$229.00</span>
+          </div>
+
+          <button class="btn btn-primary" id="btn-pay-now" style="width: 100%; margin-top: 1.5rem; padding: 1rem;" onclick="completePurchase()">
+            Pay & Complete Order ($229.00)
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Aura Essentials. Tracked live with CausalFunnel Analytics SDK.</p>
+  </footer>
+
+  <div class="tracking-badge">
+    <div class="tracking-pulse"></div>
+    <div>
+      <div><strong>Live Tracking Active</strong></div>
+      <div style="color:var(--text-muted); font-size:0.75rem;">
+        Session: <code id="badge-session-id" style="color:#a5b4fc">...</code>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function completePurchase() {
+      alert('🎉 Order #CF-' + Math.floor(100000 + Math.random() * 900000) + ' confirmed! Thank you for testing CausalFunnel Analytics.');
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        if (window.CausalTracker) {
+          const sid = window.CausalTracker.getSessionId();
+          document.getElementById('badge-session-id').innerText = sid.substring(0, 16) + '...';
+        }
+      }, 200);
+    });
+  </script>
+</body>
+</html>

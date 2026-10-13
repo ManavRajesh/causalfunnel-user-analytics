@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Store | Premium Electronics & Audio</title>
+  <link rel="stylesheet" href="/demo/styles.css">
+  <!-- CausalFunnel Analytics Tracker Script -->
+  <script src="/tracker.js" data-endpoint="/api/events"></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="/demo/index.html" class="brand" id="brand-logo">
+        <span>AURA</span>
+        <span class="brand-badge">Demo</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/demo/index.html" class="active" id="nav-home">Home</a>
+        <a href="/demo/product.html" id="nav-products">Products</a>
+        <a href="#featured" id="nav-featured">Featured</a>
+        <a href="/demo/checkout.html" id="nav-checkout">Cart (1)</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/demo/checkout.html" class="btn-cart" id="btn-header-cart">
+          🛒 Bag <span style="background:#6366f1; border-radius:50%; padding:0 6px; font-size:0.75rem;">1</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-tag" id="hero-pill">Next-Gen Audio Experience</div>
+    <h1>Hear Sound As It Was Intended</h1>
+    <p>Spatial active noise cancellation, handcrafted acoustic drivers, and 48-hour battery longevity engineered for perfection.</p>
+    <div class="hero-actions">
+      <a href="/demo/product.html" class="btn btn-primary" id="hero-shop-now">
+        Explore Aura Pro &rarr;
+      </a>
+      <a href="#featured" class="btn btn-secondary" id="hero-view-catalog">
+        Browse Collection
+      </a>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="section-header" id="featured">
+      <div>
+        <h2>Featured Hardware</h2>
+        <p style="color:var(--text-muted); font-size:0.95rem;">Precision crafted acoustic instruments and daily companions</p>
+      </div>
+    </div>
+
+    <div class="product-grid">
+      <!-- Product 1 -->
+      <div class="product-card" id="card-featured-1">
+        <div class="product-img">🎧</div>
+        <div class="product-info">
+          <div class="product-category">Wireless Audio</div>
+          <div class="product-title">Aura Wireless Pro Headphones</div>
+          <div class="product-price">$249.00</div>
+          <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:1rem;">Adaptive noise cancelling with custom titanium neodymium drivers.</p>
+          <div class="product-actions">
+            <a href="/demo/product.html" class="btn btn-secondary btn-sm" id="view-details-1">View Specs</a>
+            <button class="btn btn-primary btn-sm" id="quick-buy-1" onclick="alert('Added Aura Wireless Pro to cart!')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card" id="card-featured-2">
+        <div class="product-img">⌚</div>
+        <div class="product-info">
+          <div class="product-category">Wearables</div>
+          <div class="product-title">Minimalist Chrono Smartwatch</div>
+          <div class="product-price">$189.00</div>
+          <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:1rem;">Sapphire crystal glass with continuous ECG and biometrics tracking.</p>
+          <div class="product-actions">
+            <button class="btn btn-secondary btn-sm" id="view-details-2" onclick="alert('Viewing Chrono specs')">View Specs</button>
+            <button class="btn btn-primary btn-sm" id="quick-buy-2" onclick="alert('Added Chrono Smartwatch to cart!')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card" id="card-featured-3">
+        <div class="product-img">🎙️</div>
+        <div class="product-info">
+          <div class="product-category">Studio Gear</div>
+          <div class="product-title">Aura Studio Condenser Mic</div>
+          <div class="product-price">$129.00</div>
+          <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:1rem;">Broadcasting grade cardioid pickup with zero-latency monitoring.</p>
+          <div class="product-actions">
+            <button class="btn btn-secondary btn-sm" id="view-details-3" onclick="alert('Viewing Mic specs')">View Specs</button>
+            <button class="btn btn-primary btn-sm" id="quick-buy-3" onclick="alert('Added Studio Mic to cart!')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="newsletter-card">
+      <h3>Stay Ahead of Releases</h3>
+      <p style="color:var(--text-muted); max-width:500px; margin:0 auto;">Get early member access to limited acoustic drops and exclusive discounts.</p>
+      <div class="newsletter-form">
+        <input type="email" id="newsletter-email" placeholder="Enter your email address" value="shopper@example.com">
+        <button class="btn btn-primary" id="newsletter-btn" onclick="alert('Thank you for subscribing!')">Subscribe</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Aura Essentials. Tracked live with CausalFunnel Analytics SDK.</p>
+  </footer>
+
+  <!-- Live Tracking Helper Overlay -->
+  <div class="tracking-badge" id="tracking-badge">
+    <div class="tracking-pulse"></div>
+    <div>
+      <div><strong>Live Tracking Active</strong></div>
+      <div style="color:var(--text-muted); font-size:0.75rem;">
+        Session: <code id="badge-session-id" style="color:#a5b4fc">...</code>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Update live badge with session ID
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        if (window.CausalTracker) {
+          const sid = window.CausalTracker.getSessionId();
+          document.getElementById('badge-session-id').innerText = sid.substring(0, 16) + '...';
+        }
+      }, 200);
+    });
+  </script>
+</body>
+</html>

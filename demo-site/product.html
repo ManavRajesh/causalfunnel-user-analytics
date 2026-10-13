@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Wireless Pro Headphones | Aura Store</title>
+  <link rel="stylesheet" href="/demo/styles.css">
+  <!-- CausalFunnel Analytics Tracker Script -->
+  <script src="/tracker.js" data-endpoint="/api/events"></script>
+  <style>
+    .product-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin: 2rem 0 4rem;
+    }
+    @media (max-width: 768px) {
+      .product-detail-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .main-img-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8rem;
+    }
+    .swatches {
+      display: flex;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+    .swatch-btn {
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .swatch-btn.active, .swatch-btn:hover {
+      border-color: var(--accent);
+      background: rgba(99, 102, 241, 0.15);
+    }
+    .tab-bar {
+      display: flex;
+      gap: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+    }
+    .tab-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding-bottom: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+    }
+    .tab-link.active {
+      color: #fff;
+      border-bottom-color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="/demo/index.html" class="brand" id="brand-logo">
+        <span>AURA</span>
+        <span class="brand-badge">Demo</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/demo/index.html" id="nav-home">Home</a>
+        <a href="/demo/product.html" class="active" id="nav-products">Products</a>
+        <a href="/demo/checkout.html" id="nav-checkout">Cart (1)</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/demo/checkout.html" class="btn-cart" id="btn-header-cart">🛒 Bag 1</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div style="margin: 1.5rem 0; color: var(--text-muted); font-size: 0.9rem;">
+      <a href="/demo/index.html" style="color:var(--text-muted)">Home</a> / <a href="/demo/product.html" style="color:var(--text-muted)">Audio</a> / <span style="color:#fff">Aura Wireless Pro</span>
+    </div>
+
+    <div class="product-detail-grid">
+      <div>
+        <div class="main-img-box" id="product-hero-preview">🎧</div>
+      </div>
+      <div>
+        <span class="product-category">Flagship Collection</span>
+        <h1 style="font-size: 2.5rem; margin: 0.5rem 0 1rem;">Aura Wireless Pro Headphones</h1>
+        <div style="font-size: 1.75rem; font-weight: 800; color: #fff; margin-bottom: 1.5rem;">$249.00</div>
+        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
+          Engineered for audio purists. Featuring custom 45mm neodymium drivers, active acoustic cancellation with multi-microphone beamforming, and ultra-soft memory foam earcups.
+        </p>
+
+        <div>
+          <label style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Select Color Finish</label>
+          <div class="swatches">
+            <button class="swatch-btn active" id="btn-color-black" onclick="selectColor(this, 'Midnight Black')">● Midnight Black</button>
+            <button class="swatch-btn" id="btn-color-silver" onclick="selectColor(this, 'Silver Titanium')">○ Silver Titanium</button>
+            <button class="swatch-btn" id="btn-color-navy" onclick="selectColor(this, 'Deep Navy')">● Deep Navy</button>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+          <button class="btn btn-secondary" id="btn-add-cart" style="flex: 1;" onclick="addToCart()">Add to Bag</button>
+          <a href="/demo/checkout.html" class="btn btn-primary" id="btn-buy-now" style="flex: 1.2;">Proceed to Checkout &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tab-bar">
+      <a class="tab-link active" id="tab-overview" onclick="showTab(this, 'sec-overview')">Overview</a>
+      <a class="tab-link" id="tab-specifications" onclick="showTab(this, 'sec-specs')">Specifications</a>
+      <a class="tab-link" id="tab-reviews" onclick="showTab(this, 'sec-reviews')">Customer Reviews (4.9 / 5)</a>
+    </div>
+
+    <div id="sec-content" style="padding-bottom: 4rem; color: var(--text-muted);">
+      <p id="tab-text">48-hour continuous playtime with ultra-fast USB-C charge (3 hours of listening from a 5-minute charge). Compatible with iOS, Android, macOS, and Windows.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Aura Essentials. Tracked live with CausalFunnel Analytics SDK.</p>
+  </footer>
+
+  <div class="tracking-badge">
+    <div class="tracking-pulse"></div>
+    <div>
+      <div><strong>Live Tracking Active</strong></div>
+      <div style="color:var(--text-muted); font-size:0.75rem;">
+        Session: <code id="badge-session-id" style="color:#a5b4fc">...</code>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function selectColor(btn, color) {
+      document.querySelectorAll('.swatch-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+    function addToCart() {
+      alert('Aura Wireless Pro added to your cart!');
+    }
+    function showTab(tab, sec) {
+      document.querySelectorAll('.tab-link').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const textMap = {
+        'sec-overview': '48-hour continuous playtime with ultra-fast USB-C charge. Compatible with iOS, Android, macOS, and Windows.',
+        'sec-specs': 'Frequency response: 10Hz - 40,000Hz. Impedance: 32 Ohms. Bluetooth 5.4 with LDAC, AAC, aptX Adaptive codecs.',
+        'sec-reviews': 'Rated 4.9/5 by 1,480 verified listeners. "Best noise cancellation I have ever experienced." — TechRadar 2026.',
+      };
+      document.getElementById('tab-text').innerText = textMap[sec] || '';
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        if (window.CausalTracker) {
+          const sid = window.CausalTracker.getSessionId();
+          document.getElementById('badge-session-id').innerText = sid.substring(0, 16) + '...';
+        }
+      }, 200);
+    });
+  </script>
+</body>
+</html>

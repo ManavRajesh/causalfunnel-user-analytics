@@ -1,0 +1,21 @@
+{
+  "name": "causalfunnel-analytics-backend",
+  "version": "1.0.0",
+  "description": "User Analytics & Session Tracking Backend for CausalFunnel",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "seed": "node src/seed/seedDemoData.js"
+  },
+  "keywords": ["analytics", "tracking", "session", "heatmap", "mongodb", "express"],
+  "author": "CausalFunnel Candidate",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5",
+    "morgan": "^1.10.0"
+  }
+}
