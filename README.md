@@ -101,8 +101,8 @@ flowchart LR
 
 ### Step 1: Clone & Install Dependencies
 ```bash
-git clone <your-repo-url>
-cd causalfunnel-analytics
+git clone https://github.com/ManavRajesh/causalfunnel-user-analytics.git
+cd causalfunnel-user-analytics
 
 # Run unified setup (installs backend & frontend dependencies, builds bundle, and seeds demo data)
 npm run setup
