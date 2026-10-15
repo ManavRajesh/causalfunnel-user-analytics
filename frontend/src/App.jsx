@@ -29,11 +29,25 @@ export default function App() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [isSeeding, setIsSeeding] = useState(false);
   const [notification, setNotification] = useState(null);
+  const [autoRefresh, setAutoRefresh] = useState(true);
 
   const showToast = (message, type = 'success') => {
     setNotification({ message, type });
     setTimeout(() => setNotification(null), 3500);
   };
+
+  // Keyboard navigation shortcuts: 1 = Overview, 2 = Sessions, 3 = Heatmap, 4 = Playground
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
+      if (e.key === '1') setActiveTab('overview');
+      if (e.key === '2') setActiveTab('sessions');
+      if (e.key === '3') setActiveTab('heatmap');
+      if (e.key === '4') setActiveTab('playground');
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   // Load overall metrics & pages
   const loadCoreData = useCallback(async () => {
@@ -123,14 +137,14 @@ export default function App() {
     if (selectedSessionId) await loadJourney(selectedSessionId);
     if (selectedPageUrl) await loadHeatmap(selectedPageUrl);
     setIsRefreshing(false);
-    showToast('Analytics refreshed successfully');
+    showToast('Telemetry refreshed successfully');
   };
 
-  const handleSeed = async () => {
+  const handleSeed = async (count = 8) => {
     setIsSeeding(true);
     try {
-      const res = await seedDemoData(8);
-      showToast(res.message || 'Seeded 8 demo user sessions!');
+      const res = await seedDemoData(count);
+      showToast(res.message || `Seeded ${count} realistic user journeys!`);
       await loadCoreData();
       if (selectedSessionId) await loadJourney(selectedSessionId);
       if (selectedPageUrl) await loadHeatmap(selectedPageUrl);
@@ -156,6 +170,10 @@ export default function App() {
         isSeeding={isSeeding}
         isRefreshing={isRefreshing}
         health={health}
+        sessionCount={sessions.length}
+        pageCount={pages.length}
+        autoRefresh={autoRefresh}
+        setAutoRefresh={setAutoRefresh}
       />
 
       {/* Toast Notification */}
@@ -163,17 +181,18 @@ export default function App() {
         <div
           style={{
             position: 'fixed',
-            top: '75px',
-            right: '25px',
+            top: '68px',
+            right: '24px',
             background: notification.type === 'error' ? 'rgba(239, 68, 68, 0.95)' : 'rgba(16, 185, 129, 0.95)',
             color: '#fff',
-            padding: '0.65rem 1.25rem',
+            padding: '0.55rem 1.1rem',
             borderRadius: '8px',
-            fontSize: '0.85rem',
+            fontSize: '0.82rem',
             fontWeight: 600,
             zIndex: 9999,
-            boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
-            backdropFilter: 'blur(8px)',
+            boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
+            backdropFilter: 'blur(10px)',
+            border: '1px solid rgba(255, 255, 255, 0.2)'
           }}
         >
           {notification.message}

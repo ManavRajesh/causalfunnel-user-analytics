@@ -59,13 +59,13 @@ E-commerce businesses need to understand how users interact with their storefron
 ```mermaid
 flowchart LR
     subgraph Client["Webpages / Demo Store"]
-        A[User Browser] -->|Clicks & Navigations| B["CausalTracker SDK (tracker.js)"]
-        B -->|sendBeacon / fetch(keepalive)| C["POST /api/events"]
+        A["User Browser"] -->|"Clicks & Navigations"| B["CausalTracker SDK (tracker.js)"]
+        B -->|"sendBeacon / fetch (keepalive)"| C["POST /api/events"]
     end
 
     subgraph Backend["Node.js / Express API (Port 5001)"]
         C --> D["Validation & Sanitization Controller"]
-        D --> E[("MongoDB (Port 27017)\nEvents Collection")]
+        D --> E[("MongoDB Events Collection")]
         E --> F["Session Aggregation Pipeline"]
         E --> G["Heatmap Query Pipeline"]
     end
